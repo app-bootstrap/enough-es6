@@ -1,0 +1,45 @@
+{
+  "name": "engough-es6",
+  "version": "0.1.0",
+  "description": "enough by es6",
+  "maintainers": [
+    {
+      "name": "army8735",
+      "email": "army8735@qq.com"
+    }
+  ],
+  "scripts": {
+    "test": "make test"
+  },
+  "config": {
+    "blanket": {
+      "pattern": [
+      ]
+    }
+  },
+  "repository": {
+    "type": "git",
+      "url": "git://github.com/enoughjs/enough-es6.git"
+  },
+  "keywords": [
+    "enough"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "blanket": "^1.1.6",
+    "coveralls": "^2.10.0",
+    "expect.js": "^0.3.1",
+    "gulp": "^3.8.1",
+    "gulp-clean": "^0.2.4",
+    "gulp-util": "^2.2.14",
+    "jsdc": "^0.5.0",
+    "mocha": "^1.18.2",
+    "mocha-lcov-reporter": "0.0.1",
+    "through2": "^0.4.2"
+  },
+  "main": "./index.js",
+  "engines": {
+    "node": ">= 0.10.0"
+  },
+  "readmeFilename": "README.md"
+}
