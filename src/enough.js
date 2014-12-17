@@ -4,6 +4,9 @@
   var _guid = 0;
 
   var _ = {
+    guid: function() {
+      return _guid++;
+    }
   };
 
   class Event {
@@ -54,7 +57,7 @@
         });
       }
     }
-    emit(id, data = []) {
+    emit(id, ...data) {
       var that = this;
       if(typeof id === 'string') {
         if(that.__hash.hasOwnProperty(id)) {
@@ -71,9 +74,50 @@
     }
   }
 
+  class Model extends Event {
+    constructor() {
+      super();
+      this.__lib = {};
+    }
+    gett(k) {
+      return this.__lib.hasOwnProperty(k) ? this.__lib[k] : undefined;
+    }
+    sett(k, v) {
+      var that = this;
+      if(typeof k === 'object') {
+        Object.keys(k).forEach(function(item) {
+          that.set(item, k[item]);
+        });
+      }
+      else {
+        var oldValue = that.get(k);
+        if(oldValue === v) {
+          return;
+        }
+        that.__lib[k] = v;
+        that.emit('change:' + k, v);
+        that.emit('change', v);
+      }
+    }
+    remove(k) {
+      var that = this;
+      if(typeof k === 'undefined') {
+        Object.keys(that.__lib).forEach(function(item) {
+          that.remove(item);
+        });
+      }
+      else if(that.__lib.hasOwnProperty(k)) {
+        delete that.__lib[k];
+        that.emit('change:' + k);
+        that.emit('change');
+      }
+    }
+  }
+
   var Enough = {
     _: _,
-    Event: Event
+    Event: Event,
+    Model: Model
   };
 
   if (typeof exports !== 'undefined') {
