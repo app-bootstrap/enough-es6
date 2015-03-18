@@ -71,18 +71,18 @@
       super();
       this.__lib = {};
     }
-    gett(k) {
+    gets(k) {
       return this.__lib.hasOwnProperty(k) ? this.__lib[k] : undefined;
     }
-    sett(k, v) {
+    sets(k, v) {
       var that = this;
       if(typeof k === 'object') {
         Object.keys(k).forEach(function(item) {
-          that.set(item, k[item]);
+          that.sets(item, k[item]);
         });
       }
       else {
-        var oldValue = that.get(k);
+        var oldValue = that.gets(k);
         if(oldValue === v) {
           return;
         }
