@@ -108,7 +108,9 @@
 
   var Enough = {
     Event: Event,
-    Model: Model
+    Model: Model,
+    View: Model,
+    Controller: Model
   };
 
   if (typeof exports !== 'undefined') {
