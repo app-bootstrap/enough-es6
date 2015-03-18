@@ -1,14 +1,6 @@
 ;(function() {
   'use strict';
 
-  var _guid = 0;
-
-  var _ = {
-    guid: function() {
-      return _guid++;
-    }
-  };
-
   class Event {
     constructor() {
       this.__hash = {};
@@ -115,7 +107,6 @@
   }
 
   var Enough = {
-    _: _,
     Event: Event,
     Model: Model
   };
